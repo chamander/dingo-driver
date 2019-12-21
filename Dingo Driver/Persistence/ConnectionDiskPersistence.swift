@@ -21,6 +21,8 @@ final class ConnectionListDiskPersistence: ConnectionListPersistence {
 
     func saveConnection(_ connection: Connection, completion: (() -> Void)? = nil) {
 
+        defer { completion?() }
+
         if !self.fileManager.fileExists(atPath: self.filePath) {
             self.fileManager.createFile(atPath: self.filePath, contents: nil, attributes: nil)
         }
@@ -41,8 +43,28 @@ final class ConnectionListDiskPersistence: ConnectionListPersistence {
         if let dataToPersist = try? encoder.encode(connectionsToPersist) {
             try? dataToPersist.write(to: self.fileURL)
         }
+    }
 
-        completion?()
+    func deleteConnection(_ connection: Connection, completion: (() -> Void)?) {
+
+        defer { completion?() }
+
+        guard self.fileManager.fileExists(atPath: self.filePath) else { return }
+
+        let decoder = JSONDecoder()
+        let data: Data! = try? Data(contentsOf: self.fileURL)
+
+        var connectionsToPersist: [Connection]
+
+        guard let persistedConnections = try? decoder.decode(Array<Connection>.self, from: data) else { return }
+
+        connectionsToPersist = persistedConnections
+        connectionsToPersist.removeAll { $0 == connection }
+
+        let encoder = JSONEncoder()
+        if let dataToPersist = try? encoder.encode(connectionsToPersist) {
+            try? dataToPersist.write(to: self.fileURL)
+        }
     }
 }
 
