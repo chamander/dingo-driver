@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -22,6 +23,9 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
+                                <connections>
+                                    <segue destination="czN-OA-tQs" kind="show" id="8Bh-8I-uCq"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -43,6 +47,49 @@
                 <exit id="kSH-m6-nW7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-294.20289855072468" y="68.973214285714278"/>
+        </scene>
+        <!--Remote Control View Controller-->
+        <scene sceneID="LAc-Qs-fc2">
+            <objects>
+                <viewController id="czN-OA-tQs" customClass="RemoteControlViewController" customModule="Dingo_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="su9-U7-HDL">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zgw-HD-BHS">
+                                <rect key="frame" x="186" y="452" width="42" height="49"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o92-xa-DXx">
+                                        <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uM0-dU-8Uy">
+                                        <rect key="frame" x="0.0" y="28.5" width="42" height="20.5"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Zgw-HD-BHS" firstAttribute="centerY" secondItem="N50-JA-ZFL" secondAttribute="centerY" id="OXR-KO-ipg"/>
+                            <constraint firstItem="Zgw-HD-BHS" firstAttribute="centerX" secondItem="N50-JA-ZFL" secondAttribute="centerX" id="yQD-JU-iJM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="N50-JA-ZFL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="ODD-oY-oLi"/>
+                    <connections>
+                        <outlet property="firstLabel" destination="o92-xa-DXx" id="DOJ-wy-DGW"/>
+                        <outlet property="secondLabel" destination="uM0-dU-8Uy" id="XZH-d4-qh3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ANN-Ky-UA1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="468" y="71"/>
         </scene>
         <!--Add Connection-->
         <scene sceneID="N7m-5q-bbu">
