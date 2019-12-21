@@ -11,6 +11,10 @@ protocol ConnectionListPersistence: class {
 
 final class ConnectionListViewController: UITableViewController {
 
+    private typealias DiffableDataSource = UITableViewDiffableDataSource<Section, Connection>
+
+    // MARK: - Instance Members - Privates
+
     // TODO: Prefer injection over hard-coding impl. detail.
     private let persistence = ConnectionListDiskPersistence()
     private let provider = ConnectionListDiskProvider()
@@ -33,6 +37,8 @@ final class ConnectionListViewController: UITableViewController {
         }
     }
 
+    // MARK: - Overrides - View Controller
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.dataSource = DiffableDataSource(tableView: self.tableView) { (tableView, indexPath, connection) -> UITableViewCell? in
@@ -47,6 +53,8 @@ final class ConnectionListViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.updateTableView(animated: false)
     }
+
+    // MARK: - Interface Builder Actions - Privates - Segues
 
     @IBAction private func cancelAddSession(_ unwindSegue: UIStoryboardSegue) {
         // Segue to dismiss 'Add Session'.
@@ -67,6 +75,8 @@ final class ConnectionListViewController: UITableViewController {
         }
     }
 
+    // MARK: - Instance Members - Privates - Functions
+
     private func updateTableView(animated: Bool = true) {
 
         self.provider.withConnectionList { [weak self] connections in
@@ -76,9 +86,4 @@ final class ConnectionListViewController: UITableViewController {
             self?.dataSource.apply(snapshot, animatingDifferences: animated)
         }
     }
-}
-
-extension ConnectionListViewController {
-
-    private typealias DiffableDataSource = UITableViewDiffableDataSource<Section, Connection>
 }
