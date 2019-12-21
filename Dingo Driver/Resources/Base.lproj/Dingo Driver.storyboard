@@ -24,7 +24,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <segue destination="czN-OA-tQs" kind="show" id="8Bh-8I-uCq"/>
+                                    <segue destination="czN-OA-tQs" kind="presentation" id="8Bh-8I-uCq"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -51,13 +51,13 @@
         <!--Remote Control View Controller-->
         <scene sceneID="LAc-Qs-fc2">
             <objects>
-                <viewController id="czN-OA-tQs" customClass="RemoteControlViewController" customModule="Dingo_Driver" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController modalPresentationStyle="fullScreen" id="czN-OA-tQs" customClass="RemoteControlViewController" customModule="Dingo_Driver" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="su9-U7-HDL">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="Zgw-HD-BHS">
-                                <rect key="frame" x="186" y="452" width="42" height="49"/>
+                                <rect key="frame" x="186" y="428.5" width="42" height="49"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o92-xa-DXx">
                                         <rect key="frame" x="0.0" y="0.0" width="42" height="20.5"/>
@@ -73,9 +73,22 @@
                                     </label>
                                 </subviews>
                             </stackView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9Ee-vY-avs">
+                                <rect key="frame" x="0.0" y="44" width="58" height="52"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="52" id="Dtr-jJ-LEi"/>
+                                    <constraint firstAttribute="width" constant="58" id="pn2-Lg-huk"/>
+                                </constraints>
+                                <state key="normal" image="xmark" catalog="system"/>
+                                <connections>
+                                    <segue destination="Fi8-gl-HXz" kind="unwind" unwindAction="returnFromRemoteControl:" id="QVO-6r-Nzp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="9Ee-vY-avs" firstAttribute="top" secondItem="N50-JA-ZFL" secondAttribute="top" id="1qG-7w-uAd"/>
+                            <constraint firstItem="9Ee-vY-avs" firstAttribute="leading" secondItem="N50-JA-ZFL" secondAttribute="leading" id="9Mo-vy-pqp"/>
                             <constraint firstItem="Zgw-HD-BHS" firstAttribute="centerY" secondItem="N50-JA-ZFL" secondAttribute="centerY" id="OXR-KO-ipg"/>
                             <constraint firstItem="Zgw-HD-BHS" firstAttribute="centerX" secondItem="N50-JA-ZFL" secondAttribute="centerX" id="yQD-JU-iJM"/>
                         </constraints>
@@ -88,8 +101,9 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ANN-Ky-UA1" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="Fi8-gl-HXz" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="468" y="71"/>
+            <point key="canvasLocation" x="466.66666666666669" y="70.982142857142847"/>
         </scene>
         <!--Add Connection-->
         <scene sceneID="N7m-5q-bbu">
@@ -228,4 +242,7 @@
             <point key="canvasLocation" x="-1048" y="69"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="xmark" catalog="system" width="64" height="56"/>
+    </resources>
 </document>

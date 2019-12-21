@@ -12,6 +12,10 @@ final class RemoteControlViewController: UIViewController {
 
     private var motionManager: CMMotionManager { return .instance }
 
+    override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
+        return .landscapeRight
+    }
+
     override func viewDidLoad() {
 
         super.viewDidLoad()
