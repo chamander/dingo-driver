@@ -40,6 +40,7 @@
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mmc-T4-Hca" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <exit id="kSH-m6-nW7" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="-294" y="69"/>
         </scene>
@@ -124,7 +125,11 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Add Session" prompt="Input the details for your car" id="83I-g1-7Ll">
-                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="IYF-O8-b99"/>
+                        <barButtonItem key="leftBarButtonItem" style="plain" systemItem="cancel" id="IYF-O8-b99">
+                            <connections>
+                                <segue destination="kSH-m6-nW7" kind="unwind" unwindAction="cancelAddSession:" id="Xwh-1q-HRt"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" style="plain" systemItem="save" id="ZqY-Ad-yS8"/>
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
