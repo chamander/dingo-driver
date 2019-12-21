@@ -14,6 +14,7 @@
 		0637206623ADA61100255474 /* ApplicationDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0637205F23ADA61100255474 /* ApplicationDelegate.swift */; };
 		0637206723ADA61100255474 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0637206023ADA61100255474 /* SceneDelegate.swift */; };
 		0637206B23ADA62200255474 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0637206923ADA62200255474 /* Tests.swift */; };
+		06CEE5F223ADC75E00FCC637 /* AddSessionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEE5F123ADC75E00FCC637 /* AddSessionViewController.swift */; };
 		6455C7FFEF5EA84D838273A8 /* Pods_Dingo_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF8E600AAF77873E9EEA5511 /* Pods_Dingo_Driver.framework */; };
 /* End PBXBuildFile section */
 
@@ -39,6 +40,7 @@
 		0637206023ADA61100255474 /* SceneDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		0637206923ADA62200255474 /* Tests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
 		0637206A23ADA62200255474 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		06CEE5F123ADC75E00FCC637 /* AddSessionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSessionViewController.swift; sourceTree = "<group>"; };
 		3FF9E1A39275592D2E67DF87 /* Pods-Dingo Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dingo Driver.release.xcconfig"; path = "Target Support Files/Pods-Dingo Driver/Pods-Dingo Driver.release.xcconfig"; sourceTree = "<group>"; };
 		A2A2126CA9DC485B76647BEF /* Pods-Dingo Driver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dingo Driver.debug.xcconfig"; path = "Target Support Files/Pods-Dingo Driver/Pods-Dingo Driver.debug.xcconfig"; sourceTree = "<group>"; };
 		EF8E600AAF77873E9EEA5511 /* Pods_Dingo_Driver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dingo_Driver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -116,6 +118,7 @@
 		0637205C23ADA61100255474 /* Application */ = {
 			isa = PBXGroup;
 			children = (
+				06CEE5F023ADC74E00FCC637 /* Add Session */,
 				0637205D23ADA61100255474 /* Dingo Driver */,
 			);
 			path = Application;
@@ -136,6 +139,14 @@
 				0637206A23ADA62200255474 /* Info.plist */,
 			);
 			path = Tests;
+			sourceTree = "<group>";
+		};
+		06CEE5F023ADC74E00FCC637 /* Add Session */ = {
+			isa = PBXGroup;
+			children = (
+				06CEE5F123ADC75E00FCC637 /* AddSessionViewController.swift */,
+			);
+			path = "Add Session";
 			sourceTree = "<group>";
 		};
 		5882E8D9C4E76512BB934053 /* Pods */ = {
@@ -301,6 +312,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				0637206523ADA61100255474 /* SessionListViewController.swift in Sources */,
+				06CEE5F223ADC75E00FCC637 /* AddSessionViewController.swift in Sources */,
 				0637206623ADA61100255474 /* ApplicationDelegate.swift in Sources */,
 				0637206723ADA61100255474 /* SceneDelegate.swift in Sources */,
 			);
