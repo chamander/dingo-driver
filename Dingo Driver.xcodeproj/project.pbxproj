@@ -16,6 +16,7 @@
 		0637206B23ADA62200255474 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0637206923ADA62200255474 /* Tests.swift */; };
 		06CEE5F223ADC75E00FCC637 /* AddConnectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEE5F123ADC75E00FCC637 /* AddConnectionViewController.swift */; };
 		06CEE5F523ADCC9200FCC637 /* Connection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEE5F423ADCC9200FCC637 /* Connection.swift */; };
+		06CEE5F823ADD06800FCC637 /* ConnectionDiskPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEE5F723ADD06800FCC637 /* ConnectionDiskPersistence.swift */; };
 		6455C7FFEF5EA84D838273A8 /* Pods_Dingo_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF8E600AAF77873E9EEA5511 /* Pods_Dingo_Driver.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +44,7 @@
 		0637206A23ADA62200255474 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		06CEE5F123ADC75E00FCC637 /* AddConnectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddConnectionViewController.swift; sourceTree = "<group>"; };
 		06CEE5F423ADCC9200FCC637 /* Connection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Connection.swift; sourceTree = "<group>"; };
+		06CEE5F723ADD06800FCC637 /* ConnectionDiskPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDiskPersistence.swift; sourceTree = "<group>"; };
 		3FF9E1A39275592D2E67DF87 /* Pods-Dingo Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dingo Driver.release.xcconfig"; path = "Target Support Files/Pods-Dingo Driver/Pods-Dingo Driver.release.xcconfig"; sourceTree = "<group>"; };
 		A2A2126CA9DC485B76647BEF /* Pods-Dingo Driver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dingo Driver.debug.xcconfig"; path = "Target Support Files/Pods-Dingo Driver/Pods-Dingo Driver.debug.xcconfig"; sourceTree = "<group>"; };
 		EF8E600AAF77873E9EEA5511 /* Pods_Dingo_Driver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dingo_Driver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -94,6 +96,7 @@
 				0637206023ADA61100255474 /* SceneDelegate.swift */,
 				0637205C23ADA61100255474 /* Application */,
 				06CEE5F323ADCC7D00FCC637 /* Models */,
+				06CEE5F623ADD05100FCC637 /* Persistence */,
 				0637205423ADA61100255474 /* Resources */,
 			);
 			path = "Dingo Driver";
@@ -158,6 +161,14 @@
 				06CEE5F423ADCC9200FCC637 /* Connection.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		06CEE5F623ADD05100FCC637 /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+				06CEE5F723ADD06800FCC637 /* ConnectionDiskPersistence.swift */,
+			);
+			path = Persistence;
 			sourceTree = "<group>";
 		};
 		5882E8D9C4E76512BB934053 /* Pods */ = {
@@ -322,6 +333,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				06CEE5F823ADD06800FCC637 /* ConnectionDiskPersistence.swift in Sources */,
 				0637206523ADA61100255474 /* ConnectionListViewController.swift in Sources */,
 				06CEE5F223ADC75E00FCC637 /* AddConnectionViewController.swift in Sources */,
 				06CEE5F523ADCC9200FCC637 /* Connection.swift in Sources */,
