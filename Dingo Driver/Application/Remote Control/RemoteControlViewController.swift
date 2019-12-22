@@ -32,6 +32,10 @@ final class RemoteControlViewController: UIViewController {
         return .landscapeRight
     }
 
+    override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+        return .landscape
+    }
+
     override func viewDidAppear(_ animated: Bool) {
 
         super.viewDidAppear(animated)
