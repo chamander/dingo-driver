@@ -1,7 +1,7 @@
 
 import UIKit
 
-final class AddConnectionViewController: UITableViewController {
+final class AddConnectionViewController: UITableViewController, UITextFieldDelegate {
 
     // MARK: - Instance Members - Public API
 
@@ -49,8 +49,16 @@ final class AddConnectionViewController: UITableViewController {
         }
     }
 
-    private func perform(_ segue: Segue, sender: Any?) {
+    private func perform(_ segue: Segue, sender: Any) {
         self.performSegue(withIdentifier: segue.identifier, sender: sender)
+    }
+
+    // MARK: - Override - View Controller
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.hostnameTextField.delegate = self
+        self.topicTextField.delegate = self
     }
 
     // MARK: - Override - Table View Controller
@@ -66,10 +74,41 @@ final class AddConnectionViewController: UITableViewController {
         }
     }
 
+    // MARK: - Conformance - Text Field Delegate
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        switch textField {
+        case self.hostnameTextField:
+            self.topicTextField.becomeFirstResponder()
+            return true
+        case self.topicTextField:
+            self.completeAddConnectionUseCaseIfAble(sender: self.topicTextField)
+            return true
+        default:
+            return false // Delegate call for an unexpected UITextField instance.
+        }
+    }
+
     // MARK: - Interface Builder Actions - Privates
 
     @IBAction private func onSaveButtonTap(_ sender: UIBarButtonItem) {
+        self.completeAddConnectionUseCaseIfAble(sender: sender)
+    }
 
+    // MARK: - Privates - Persisting the Connection
+
+    // - If the view controller captures enough info. to persist connection:
+    //   - Persist the connection.
+    //   - Return to Connection List.
+    // - Else, present alert to request for more information.
+    //   - Return user to Add Connection (as per before attempting to persist).
+    //
+    /// Attempts to complete the 'Add Connection' use-case; returning to the
+    /// Connection List, if completion is possible.
+    ///
+    /// - Parameters:
+    ///     - sender: The object triggering a use-case completion attempt.
+    private func completeAddConnectionUseCaseIfAble(sender: Any?) {
         if let createdConnection = self.createConnection() {
             self.createdConnection = createdConnection
             self.perform(.unwindToSessionList, sender: sender)
