@@ -37,6 +37,23 @@ final class ConnectionListViewController: UITableViewController {
         }
     }
 
+    private enum Segue {
+
+        enum Destination {
+
+            case remoteControl(RemoteControlViewController)
+
+            init?(_ segue: UIStoryboardSegue) {
+                switch segue.destination {
+                case let destination as RemoteControlViewController:
+                    self = .remoteControl(destination)
+                default:
+                    return nil
+                }
+            }
+        }
+    }
+
     // MARK: - Overrides - View Controller
 
     override func viewDidLoad() {
@@ -55,6 +72,17 @@ final class ConnectionListViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.updateTableView(animated: false)
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch Segue.Destination(segue) {
+        case let .remoteControl(destination)?:
+            let sender: UITableViewCell! = sender as? UITableViewCell
+            let indexPath: IndexPath! = self.tableView.indexPath(for: sender)
+            destination.connection = self.connections[indexPath.row]
+        case nil:
+            break
+        }
     }
 
     // At the moment, 'Connection' is our only model object.
