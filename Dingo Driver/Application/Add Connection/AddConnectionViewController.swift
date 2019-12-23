@@ -44,7 +44,7 @@ final class AddConnectionViewController: UITableViewController, UITextFieldDeleg
         var identifier: String {
             switch self {
             case .unwindToSessionList:
-                return "addSessionUnwindToSessionList"
+                return "addSessionUnwindToConnectionList"
             }
         }
     }

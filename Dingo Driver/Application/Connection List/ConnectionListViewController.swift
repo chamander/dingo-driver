@@ -90,12 +90,12 @@ final class ConnectionListViewController: UITableViewController {
         // The user tapped 'Cancel'; do nothing.
     }
 
-    @IBAction private func returnFromRemoteControl(_ unwindSegue: UIStoryboardSegue) {
+    @IBAction private func remoteControlUnwindToConnectionList(_ unwindSegue: UIStoryboardSegue) {
         // Segue to dismiss 'Remote Control'.
         // The user tapped 'Close'; do nothing.
     }
 
-    @IBAction private func addSessionUnwindToSessionList(_ unwindSegue: UIStoryboardSegue) {
+    @IBAction private func addSessionUnwindToConnectionList(_ unwindSegue: UIStoryboardSegue) {
         // Segue to dismiss 'Add Session'.
         // The user successfully tapped 'Save'; persist the session.
         guard let source = unwindSegue.source as? AddConnectionViewController else {

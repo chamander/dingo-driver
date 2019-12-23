@@ -81,7 +81,7 @@
                                 </constraints>
                                 <state key="normal" image="xmark" catalog="system"/>
                                 <connections>
-                                    <segue destination="Fi8-gl-HXz" kind="unwind" identifier="remoteControlUnwindToSessionList" unwindAction="returnFromRemoteControl:" id="QVO-6r-Nzp"/>
+                                    <segue destination="Fi8-gl-HXz" kind="unwind" identifier="remoteControlUnwindToSessionList" unwindAction="remoteControlUnwindToConnectionList:" id="QVO-6r-Nzp"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -114,7 +114,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
-                            <tableViewSection headerTitle="Details" id="1lr-pK-Lwi">
+                            <tableViewSection headerTitle="IP / Hostname and Topic" id="1lr-pK-Lwi">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="RXD-4d-o7j" userLabel="Hostname Cell">
                                         <rect key="frame" x="0.0" y="55.5" width="414" height="43.5"/>
@@ -183,7 +183,7 @@
                     <connections>
                         <outlet property="hostnameTextField" destination="ltN-Ra-b6b" id="c6U-PX-HvZ"/>
                         <outlet property="topicTextField" destination="xuD-aC-1dy" id="Wft-AV-8I2"/>
-                        <segue destination="hWc-bY-CmL" kind="unwind" identifier="addSessionUnwindToSessionList" unwindAction="addSessionUnwindToSessionList:" id="UJm-ZF-wI8"/>
+                        <segue destination="hWc-bY-CmL" kind="unwind" identifier="addSessionUnwindToConnectionList" unwindAction="addSessionUnwindToConnectionList:" id="UJm-ZF-wI8"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="6ni-FK-bRy" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
