@@ -34,7 +34,7 @@ final class RemoteControlViewController: UIViewController {
     private var motionManager: CMMotionManager { return .instance }
 
     deinit {
-        self.session.disconnect()
+        self.session?.disconnect()
     }
 
     override var preferredInterfaceOrientationForPresentation: UIInterfaceOrientation {
