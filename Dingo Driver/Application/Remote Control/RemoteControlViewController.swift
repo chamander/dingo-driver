@@ -13,6 +13,12 @@ final class RemoteControlViewController: UIViewController {
 
     private var session: MQTTSession!
 
+    private let operationQueue: OperationQueue = {
+        let queue = OperationQueue()
+        queue.underlyingQueue = .global(qos: .userInitiated)
+        return queue
+    }()
+
     var connection: Connection?
 
     private enum Segue {
@@ -91,15 +97,17 @@ final class RemoteControlViewController: UIViewController {
         self.session = session
 
         self.motionManager.deviceMotionUpdateInterval = 0.5
-        self.motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: .main) { [weak self] motion, error in
+        self.motionManager.startDeviceMotionUpdates(using: .xArbitraryZVertical, to: self.operationQueue) { [weak self] motion, error in
 
             guard let self = self else { return }
 
             let normalizedPitch: Double = motion.map { $0.attitude.pitch * 2 / .pi } ?? 0.0
             let normalizedRoll: Double = motion.map { $0.attitude.roll * 2 / .pi } ?? 0.0
 
-            self.firstLabel?.text = "Pitch: \(String(describing: normalizedPitch))"
-            self.secondLabel?.text = "Roll: \(String(describing: normalizedRoll))"
+            DispatchQueue.main.async {
+                self.firstLabel?.text = "Pitch: \(String(describing: normalizedPitch))"
+                self.secondLabel?.text = "Roll: \(String(describing: normalizedRoll))"
+            }
 
             self.session.publishData(
                 "throttle:\(normalizedPitch)".data(using: .utf8),
