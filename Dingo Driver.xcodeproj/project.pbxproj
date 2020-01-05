@@ -19,6 +19,7 @@
 		06CEE5F823ADD06800FCC637 /* ConnectionDiskPersistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEE5F723ADD06800FCC637 /* ConnectionDiskPersistence.swift */; };
 		06CEE5FB23AE410A00FCC637 /* RemoteControlViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEE5FA23AE410A00FCC637 /* RemoteControlViewController.swift */; };
 		06CEE5FE23AE419100FCC637 /* CMMotionManager+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06CEE5FD23AE419100FCC637 /* CMMotionManager+Utils.swift */; };
+		06D6E3C723C1AB9800B9C639 /* RemoteControlSessionSettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 06D6E3C623C1AB9800B9C639 /* RemoteControlSessionSettingsTableViewController.swift */; };
 		6455C7FFEF5EA84D838273A8 /* Pods_Dingo_Driver.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EF8E600AAF77873E9EEA5511 /* Pods_Dingo_Driver.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +50,7 @@
 		06CEE5F723ADD06800FCC637 /* ConnectionDiskPersistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConnectionDiskPersistence.swift; sourceTree = "<group>"; };
 		06CEE5FA23AE410A00FCC637 /* RemoteControlViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlViewController.swift; sourceTree = "<group>"; };
 		06CEE5FD23AE419100FCC637 /* CMMotionManager+Utils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CMMotionManager+Utils.swift"; sourceTree = "<group>"; };
+		06D6E3C623C1AB9800B9C639 /* RemoteControlSessionSettingsTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoteControlSessionSettingsTableViewController.swift; sourceTree = "<group>"; };
 		3FF9E1A39275592D2E67DF87 /* Pods-Dingo Driver.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dingo Driver.release.xcconfig"; path = "Target Support Files/Pods-Dingo Driver/Pods-Dingo Driver.release.xcconfig"; sourceTree = "<group>"; };
 		A2A2126CA9DC485B76647BEF /* Pods-Dingo Driver.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dingo Driver.debug.xcconfig"; path = "Target Support Files/Pods-Dingo Driver/Pods-Dingo Driver.debug.xcconfig"; sourceTree = "<group>"; };
 		EF8E600AAF77873E9EEA5511 /* Pods_Dingo_Driver.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dingo_Driver.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,6 +134,7 @@
 				06CEE5F023ADC74E00FCC637 /* Add Connection */,
 				0637205D23ADA61100255474 /* Connection List */,
 				06CEE5F923AE406200FCC637 /* Remote Control */,
+				06D6E3C523C1AB8200B9C639 /* Remote Control Session Settings */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -191,6 +194,14 @@
 				06CEE5FD23AE419100FCC637 /* CMMotionManager+Utils.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		06D6E3C523C1AB8200B9C639 /* Remote Control Session Settings */ = {
+			isa = PBXGroup;
+			children = (
+				06D6E3C623C1AB9800B9C639 /* RemoteControlSessionSettingsTableViewController.swift */,
+			);
+			path = "Remote Control Session Settings";
 			sourceTree = "<group>";
 		};
 		5882E8D9C4E76512BB934053 /* Pods */ = {
@@ -362,6 +373,7 @@
 				06CEE5F523ADCC9200FCC637 /* Connection.swift in Sources */,
 				0637206623ADA61100255474 /* ApplicationDelegate.swift in Sources */,
 				0637206723ADA61100255474 /* SceneDelegate.swift in Sources */,
+				06D6E3C723C1AB9800B9C639 /* RemoteControlSessionSettingsTableViewController.swift in Sources */,
 				06CEE5FE23AE419100FCC637 /* CMMotionManager+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

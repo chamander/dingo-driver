@@ -19,14 +19,32 @@ final class RemoteControlViewController: UIViewController {
         return queue
     }()
 
+    private var isPaused: Bool = false
+
+    private var currentSessionSettings: RemoteControlSessionSettings?
+
     var connection: Connection?
 
     private enum Segue {
 
         case unwindToConnectionList
+        case remoteControlSessionSettings
+
+        init?(_ segue: UIStoryboardSegue) {
+            switch segue.identifier {
+            case "remoteControlSessionSettings"?:
+                self = .remoteControlSessionSettings
+            case "remoteControlUnwindToSessionList"?:
+                self = .unwindToConnectionList
+            default:
+                return nil
+            }
+        }
 
         var identifier: String {
             switch self {
+            case .remoteControlSessionSettings:
+                return "remoteControlSessionSettings"
             case .unwindToConnectionList:
                 return "remoteControlUnwindToSessionList"
             }
@@ -101,24 +119,81 @@ final class RemoteControlViewController: UIViewController {
 
             guard let self = self else { return }
 
-            let throttle: Double = .adjustedValue(fromRawDeviceValue: motion?.attitude.roll ?? 0.0)
-            let steering: Double = .adjustedValue(fromRawDeviceValue: motion?.attitude.pitch ?? 0.0)
+            let throttle: String
+            let steering: String
 
-            DispatchQueue.main.async {
-                self.firstLabel?.text = "Throttle: \(String(describing: throttle))"
-                self.secondLabel?.text = "Steering: \(String(describing: steering))"
+            if let settings = self.currentSessionSettings {
+
+                switch settings.throttleSelection {
+                case .userControlled:
+                    let throttleValue: Double = .adjustedValue(fromRawDeviceValue: motion?.attitude.roll ?? 0.0)
+                    throttle = String(describing: throttleValue)
+                case let .constant(value):
+                    throttle = String(describing: value)
+                case .automatic:
+                    throttle = "auto"
+                }
+
+                switch settings.steeringSelection {
+                case .userControlled:
+                    let steeringValue: Double = .adjustedValue(fromRawDeviceValue: motion?.attitude.pitch ?? 0.0)
+                    steering = String(describing: steeringValue)
+                case let .constant(value):
+                    steering = String(describing: value)
+                case .automatic:
+                    steering = "auto"
+                }
+            } else {
+
+                let throttleValue: Double = .adjustedValue(fromRawDeviceValue: motion?.attitude.roll ?? 0.0)
+                throttle = String(describing: throttleValue)
+
+                let steeringValue: Double = .adjustedValue(fromRawDeviceValue: motion?.attitude.pitch ?? 0.0)
+                steering = String(describing: steeringValue)
             }
 
-            self.session.publishData(
-                "throttle:\(throttle)".data(using: .utf8),
-                onTopic: connection.topic,
-                retain: false,
-                qos: .atLeastOnce)
-            self.session.publishData(
-                "steering:\(steering)".data(using: .utf8),
-                onTopic: connection.topic,
-                retain: false,
-                qos: .atLeastOnce)
+            DispatchQueue.main.async {
+                self.firstLabel?.text = "Throttle: \(throttle)"
+                self.secondLabel?.text = "Steering: \(steering)"
+            }
+
+            if !self.isPaused {
+                self.session.publishData(
+                    "throttle:\(throttle)".data(using: .utf8),
+                    onTopic: connection.topic,
+                    retain: false,
+                    qos: .atLeastOnce)
+                self.session.publishData(
+                    "steering:\(steering)".data(using: .utf8),
+                    onTopic: connection.topic,
+                    retain: false,
+                    qos: .atLeastOnce)
+            }
+        }
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        self.isPaused = true
+        switch Segue(segue) {
+        case .unwindToConnectionList?, nil:
+            break
+        case .remoteControlSessionSettings?:
+            if
+                let settings = self.currentSessionSettings,
+                let controller = segue.destination as? RemoteControlSessionSettingsNavigationController {
+
+                controller.settingsController.currentSelection = settings
+            }
+        }
+    }
+
+    @IBAction private func remoteControlSessionSettingsUnwindToRemoteControl(_ unwindSegue: UIStoryboardSegue) {
+        self.isPaused = false
+        switch unwindSegue.source {
+        case let controller as RemoteControlSessionSettingsTableViewController:
+            self.currentSessionSettings = controller.currentSelection
+        default:
+            break
         }
     }
 }
